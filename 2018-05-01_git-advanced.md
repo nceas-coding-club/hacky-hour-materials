@@ -1,5 +1,5 @@
-# Leveling up from basic git flow: tips & challenges
-#### _NCEAS Hacky Hour 2018-05-01_
+# Git Therapy
+#### Leveling up from basic git flow: tips & challenges; _NCEAS Hacky Hour 2018-05-01_
 
 ## Data Science Fellows
 
