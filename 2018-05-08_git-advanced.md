@@ -52,17 +52,26 @@ Check your config file:
 git config --list
 ```
 
-Wow there is a lot of things listed and it is a little be hard to know what is there by default and what has been customized by you. Another command you could use is:
+Wow there are a lot of things listed and it is a little be hard to know what is there by default and what has been customized by you. Another command you could use is:
 
 ```bash
 git config --global --edit
 ```
 
-This command aims at letting you curomized important part of your git configuration. For example if you do not like `vim`, you can change your text editor (on Mac, you can also use `nano`): 
+This command lets you customize the important parts of your git configuration. For example if you do not like `vim`, you can change your text editor (on Mac, you can also use `nano`): 
 
 ```bash
 git config --global core.editor vim
 ```
+
+To work within the editor, you can use the following commands:
+
+- `i` - insert mode - lets you edit the vim file
+- Esc - allows you to exit from insert mode
+- `:w` - write - saves your work
+- `:q` - quit - exit editor
+- `:wq` - write & quit
+- `:q!` - force quit
 
 Cache your GitHub credentials (for 1 hour):
 
