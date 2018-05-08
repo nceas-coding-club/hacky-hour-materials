@@ -92,7 +92,7 @@ Second: you did nothing wrong!! Git tries to merge files automatically. When the
 
 1. If you **know for sure** what file version you want to keep:
 
- * keep the remote file: ```git checkout --theirs conflicted_file.txt```
+ * keep the remote file: ```git checkout --theirs conflicted_file.txt``` - make sure to change the file name, but `--theirs` is the actual command that you want to use; you don't need to know the branch/repo/username
  * keep the local file: ```git checkout --ours conflicted_file.txt```
 
 *=> You still have to* ```git add``` *and* ```git commit``` *after this*
