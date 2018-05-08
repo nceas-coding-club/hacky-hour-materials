@@ -58,10 +58,10 @@ Wow there is a lot of things listed and it is a little be hard to know what is t
 git config --global --edit
 ```
 
-This command aims at letting you curomized important part of your git configuration. For example if you do not like `vim`, you can change your text editor: 
+This command aims at letting you curomized important part of your git configuration. For example if you do not like `vim`, you can change your text editor (on Mac, you can also use `nano`): 
 
 ```bash
-git config --system core.editor vim
+git config --global core.editor vim
 ```
 
 Cache your GitHub credentials (for 1 hour):
