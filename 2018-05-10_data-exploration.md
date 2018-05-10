@@ -13,7 +13,6 @@ This week's hacky hour covers workflows and tools for data exploration in R. Ide
 
 We're roughly following the structure of [**Zuur et al. (2010) A protocol for data exploration to avoid common statistical problems**](https://besjournals.onlinelibrary.wiley.com/doi/epdf/10.1111/j.2041-210X.2009.00001.x) but skipping a couple sections. This paper is an awesome resource that I revisit often.
 
-
 Here are the links that are referenced below:
 
 #### Outliers
@@ -67,7 +66,7 @@ For simple linear regression, there are several diagnostic tools for examining r
 
 [**This vignette covers them**](https://cran.r-project.org/web/packages/olsrr/vignettes/residual_diagnostics.html) using the [**`olsrr` package**](https://cran.r-project.org/web/packages/olsrr/index.html). This is a large package that takes a little while to install but it's easy to use, designed for teaching, and packed with great stuff so it's a good one to have around anyway.
 
-You can also just throw down a histogram in base R. Here's an example with the free "crabs" dataset in the MASS package, testing frontal lobe size as a function of carapace length.
+You can also just throw down a histogram in base R. Here's an example with the free "crabs" dataset in the **`MASS`** package, testing frontal lobe size as a function of carapace length.
 
 ```{r}
 m <- lm(FL ~ CL,MASS::crabs)
@@ -104,4 +103,5 @@ If your study has a nested design of any kind, you will of course want to conduc
 
 Sometimes the relationship between y and x is obscured by interactions. In other cases, an apparent relationship between x and y is actually structured by some other grouping variable. When the cryptic variable is included, the relationship may reverse direction. This is called Simpson's paradox and in ecology it can represent [scale-dependence](http://osenberglab.ecology.uga.edu/wp-content/uploads/2012/08/2000scheiner.pdf) among other things. In the example below, the overall pattern of the data show bird species richness declining over the course of a season. However, the within-site effect shows the opposite pattern. Richness actually increases over time as more migratory bird species arrive at each site, but sites surveyed later in the season (perhaps because they are at higher elevations) may have overall fewer species of birds.
 
-![Image provided by Giancarlo Sadoti (https://gsadoti.wordpress.com/research/)](https://github.com/nceas-hacky-hour/hacky-hour-materials/blob/master/simpsons.png)
+![](https://github.com/nceas-hacky-hour/hacky-hour-materials/blob/master/simpsons.png)
+Image provided by Giancarlo Sadoti
