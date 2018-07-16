@@ -20,7 +20,7 @@ Here's a couple of great R/spatial tutorials using a couple of different package
 [reproducible maps in R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html)  
 
 
-The [`sasap-maps`](https://github.nceas.ucsb.edu/NCEAS/sasap-maps) repo also has some great examples of making maps with `sf` and `ggplot2`.
+The [`sasap-maps`](https://github.nceas.ucsb.edu/NCEAS/sasap-maps) repo also has some great examples of making maps with `sf` and `ggplot2`.  
 
 ### Hacky hour exercise
 
@@ -37,6 +37,7 @@ I'm going to download some wildfire data from [USGS](https://www.sciencebase.gov
 library(ggmap)
 library(ggplot2)
 library(sf)
+library(dplyr)
 library(tigris) # remotes::install_github('walkerke/tigris')
 
 fires <- "/Users/datateam/Downloads/Wildfires_1870_2015_Great_Basin_SHAPEFILE/Wildfires_1870_2015_Great_Basin.shp"
@@ -65,5 +66,17 @@ There's obviously a lot we can do to improve this map. Here's some things to pla
 * Change the colors on the map
 * Group by decade to reduce noise
 * Play around with borders/transparency in case there are overlapping fires
-* Try making a dynamic map with the `tmap` package or leaflet
+* Try making a dynamic map with the `tmap` package or `mapview`
 
+```{r, warning=FALSE}
+library(mapview)
+
+# Just fires larger than 1000 hectares
+fires_shp_large <- fires_shp %>% filter(Hectares_B > 1000)
+mapview(fires_shp_large["Fire_Year"])
+```
+
+#### Additional resources
+[Understanding coordinate systems and projections](http://resources.esri.com/help/9.3/arcgisengine/dotnet/89b720a5-7339-44b0-8b58-0f5bf2843393.htm)  
+[Plotting simple features vignette](https://cran.r-project.org/web/packages/sf/vignettes/sf5.html)  
+[Another interactive mapping with simple features article](https://www.computerworld.com/article/3175623/data-analytics/mapping-in-r-just-got-a-whole-lot-easier.html)  
