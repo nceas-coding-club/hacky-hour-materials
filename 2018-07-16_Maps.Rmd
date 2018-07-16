@@ -1,0 +1,69 @@
+---
+title: "Fun with maps in R!"
+author: "Emily O'Dean"
+date: "7/16/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### NCEAS Hacky Hour  2018-07-16
+
+For this week's hacky hour, we'll look at a few tools for making pretty maps in R. In order to best understand and participate in this hacky hour, you should have some knowledge of the `ggplot2` library in R, and a basic knowledge of spatial data. 
+
+Here's a couple of great R/spatial tutorials using a couple of different packages.
+
+[simple features and ggplot2](http://strimas.com/r/tidy-sf/)  
+[tmap, ggplot2, leaflet](https://github.com/Robinlovelace/Creating-maps-in-R)  
+[reproducible maps in R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html)  
+
+
+The [`sasap-maps`](https://github.nceas.ucsb.edu/NCEAS/sasap-maps) repo also has some great examples of making maps with `sf` and `ggplot2`.
+
+### Hacky hour exercise
+
+Find and download some data you'd like to visualize, or use and expand on the example below. 
+
+[ESRI Open Data](https://hub.arcgis.com/pages/open-data)  
+[US Gov's Open Data](https://www.data.gov/)
+
+#### Example exploratory mapping
+
+I'm going to download some wildfire data from [USGS](https://www.sciencebase.gov/catalog/item/59667039e4b0d1f9f05cf2ff) depicting wildfire borders over the last century
+
+```{r, results='hide', warning=FALSE, message=FALSE}
+library(ggmap)
+library(ggplot2)
+library(sf)
+library(tigris) # remotes::install_github('walkerke/tigris')
+
+fires <- "/Users/datateam/Downloads/Wildfires_1870_2015_Great_Basin_SHAPEFILE/Wildfires_1870_2015_Great_Basin.shp"
+fires_shp <- st_read(fires)
+
+# tigris has this function which will allow us to load in a basemap as a simple feature
+usa <- states(class = "sf") %>% st_crop(c(xmin = -100, xmax = -130, ymin = 32, ymax = 48))
+
+# check the projections of each simple feature to make sure that they're consistent (info about reprojecting can be found in SF's vignette)
+st_crs(usa)
+st_crs(fires_shp)
+```
+
+```{r}
+fire_map <- ggplot() + 
+  geom_sf(data=usa, fill="white", lwd = 0.8, alpha=0.8) +
+  geom_sf(data=fires_shp, aes(fill = Fire_Year), lwd = 0.0, alpha=0.8) 
+
+print(fire_map)
+```
+
+There's obviously a lot we can do to improve this map. Here's some things to play around with
+
+* Improve the crop on the map
+* Add labels for the name of the fire
+* Change the colors on the map
+* Group by decade to reduce noise
+* Play around with borders/transparency in case there are overlapping fires
+* Try making a dynamic map with the `tmap` package or leaflet
+
