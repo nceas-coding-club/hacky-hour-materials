@@ -27,11 +27,13 @@ _Our Git flow:_
 - we'll often use this workflow for updating our branch before merging it in:
 
 ```bash
+# git remote add upstream https://github.com/NCEAS/repo.git  # set the upstream repo of the fork
 git checkout master #switch to your master branch
 git pull upstream master #pull all commits from NCEAS/datamgmt that you don't have
 git push origin master #push your updated local version of master to your fork on github
 git checkout BRANCH_NAME #switch to this branch 
-git merge master #merge all commits from master into your branch
+# git merge master #merge all commits from master into your branch
+git rebase master # include the new changes (better than merge)
 git push origin BRANCH_NAME #push your branch to a branch on your fork on github
 ```
 
